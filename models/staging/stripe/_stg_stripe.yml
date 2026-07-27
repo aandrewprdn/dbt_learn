@@ -1,0 +1,20 @@
+version: 2
+
+models:
+  - name: stg_stripe__payment
+    description: Clean staging model for Stripe payments with standardized identifiers, amounts, and timestamps.
+    columns:
+      - name: payment_id
+        description: Primary key for each payment record.
+      - name: order_id
+        description: Foreign key to the related order.
+      - name: payment_method
+        description: Payment method used to complete the transaction.
+      - name: payment_amount
+        description: Amount captured for the payment record.
+      - name: payment_status
+        description: Current processing status of the payment.
+      - name: payment_created
+        description: Timestamp when the payment was created in Stripe.
+      - name: _batched_at
+        description: Timestamp when the record was included in the source batch load.
