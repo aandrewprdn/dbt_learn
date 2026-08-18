@@ -1,0 +1,9 @@
+with payments as (
+    select * from {{ ref("stg_stripe__payment") }}
+),
+total_revenue as (
+    select sum(payment_amount) as total_amount
+    from payments
+    where payment_status = 'success'
+)
+select * from total_revenue
